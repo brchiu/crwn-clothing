@@ -9,14 +9,14 @@ import { signUpStart } from '../../redux/user/user.actions';
 import { SignUpContainer, SignUpTitle } from './sign-up.styles';
 
 const SignUp = ({ signUpStart }) => {
-  const [userCredential, setUserCredential] = useState({
+  const [userCredentials, setUserCredentials] = useState({
     displayName: '',
     email: '',
     password: '',
     confirmPassword: '',
   });
 
-  const { displayName, email, password, confirmPassword } = userCredential;
+  const { displayName, email, password, confirmPassword } = userCredentials;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,7 +32,7 @@ const SignUp = ({ signUpStart }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    setUserCredential({ ...userCredential, [name]: value });
+    setUserCredentials({ ...userCredentials, [name]: value });
   };
 
   return (
