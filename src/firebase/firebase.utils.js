@@ -22,7 +22,7 @@ var config = {
   storageBucket: 'crwn-db-6f52b.appspot.com',
   messagingSenderId: '556552918358',
   appId: '1:556552918358:web:79a28bb8624d1bcbb732f7',
-  measurementId: 'G-KSJY6DDXSB',
+  measurementId: 'G-KSJY6DDXSB'
 };
 // Initialize Firebase
 firebase.initializeApp(config);
@@ -43,7 +43,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         displayName,
         email,
         createdAt,
-        ...additionalData,
+        ...additionalData
       });
     } catch (error) {
       console.log('error creating user', error.message);
@@ -60,7 +60,7 @@ export const addCollectionAndDocuments = async (
   const collectionRef = firestore.collection(collectionKey);
 
   const batch = firestore.batch();
-  objectsToAdd.forEach((obj) => {
+  objectsToAdd.forEach(obj => {
     const newDocRef = collectionRef.doc();
     batch.set(newDocRef, obj);
   });
@@ -68,15 +68,15 @@ export const addCollectionAndDocuments = async (
   return await batch.commit();
 };
 
-export const convertCollectionsSnapshotToMap = (collections) => {
-  const transformedCollection = collections.docs.map((doc) => {
+export const convertCollectionsSnapshotToMap = collections => {
+  const transformedCollection = collections.docs.map(doc => {
     const { title, items } = doc.data();
 
     return {
       routeName: encodeURI(title.toLowerCase()),
       id: doc.id,
       title,
-      items,
+      items
     };
   });
 
@@ -88,7 +88,7 @@ export const convertCollectionsSnapshotToMap = (collections) => {
 
 export const getCurrentUser = () => {
   return new Promise((resolve, reject) => {
-    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
       unsubscribe();
       resolve(userAuth);
     }, reject);

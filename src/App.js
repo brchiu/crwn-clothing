@@ -51,11 +51,11 @@ const App = ({ checkUserSession, currentUser }) => {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
-  collectionsArray: selectCollectionsForPreview,
+  collectionsArray: selectCollectionsForPreview
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  checkUserSession: () => dispatch(checkUserSession()),
+const mapDispatchToProps = dispatch => ({
+  checkUserSession: () => dispatch(checkUserSession())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

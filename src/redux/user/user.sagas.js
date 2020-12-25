@@ -8,14 +8,14 @@ import {
   signOutSuccess,
   signOutFailure,
   signUpSuccess,
-  signUpFailure,
+  signUpFailure
 } from './user.actions';
 
 import {
   auth,
   googleProvider,
   createUserProfileDocument,
-  getCurrentUser,
+  getCurrentUser
 } from '../../firebase/firebase.utils';
 
 export function* getSnapshotFromUserAuth(userAuth, additionalData) {
@@ -113,6 +113,6 @@ export function* userSagas() {
     call(onCheckUserSession),
     call(onSignOutStart),
     call(onSignUpStart),
-    call(onSignUpSuccess),
+    call(onSignUpSuccess)
   ]);
 }
